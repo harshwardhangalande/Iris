@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to Iris...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // GitHub Pages case-sensitivity redirect
+    (function() {
+      var currentPath = window.location.pathname;
+      var targetPath = '/Iris/';
+      // If path has lowercase /iris or any variation, redirect preserving query/hash
+      if (currentPath.toLowerCase().indexOf('/iris') !== -1 && currentPath !== targetPath) {
+        window.location.replace('https://harshwardhangalande.github.io/Iris/' + window.location.search + window.location.hash);
+      } else {
+        window.location.replace('https://harshwardhangalande.github.io/Iris/');
+      }
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=https://harshwardhangalande.github.io/Iris/">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    a { color: #2997ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Redirecting to Iris...</h2>
+    <p>If you are not redirected automatically, <a href="https://harshwardhangalande.github.io/Iris/">click here</a>.</p>
+  </div>
+</body>
+</html>

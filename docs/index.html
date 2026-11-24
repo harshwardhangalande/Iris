@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iris - Native macOS Eye Care, 20-20-20 Break Reminder & Screen Strain Prevention</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Iris is a free, open-source macOS break reminder and eye-care app. Prevent digital eye strain with the 20-20-20 rule, liquid glass menu bar popover, meeting detection, and Apple Force Touch trackpad haptics.">
+  <meta name="keywords" content="macos eye strain, 20-20-20 rule mac, mac break reminder, screen time eye care, macbook trackpad haptics, lookaway alternative, time out mac alternative, open source mac app, swiftui menu bar">
+  <meta name="author" content="Harshwardhan Galande">
+  <link rel="canonical" href="https://harshwardhangalande.github.io/Iris/">
+  <link rel="icon" type="image/png" href="app_icon.png">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harshwardhangalande.github.io/Iris/">
+  <meta property="og:title" content="Iris - Native macOS Eye Care & 20-20-20 Break Reminder">
+  <meta property="og:description" content="Prevent digital eye strain on Mac with native 20-20-20 breaks, liquid glass menu bar UI, meeting detection, and Force Touch trackpad haptics. Free and open source.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/harshwardhangalande/Iris/main/docs/screenshots/mockup_popover.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://harshwardhangalande.github.io/Iris/">
+  <meta property="twitter:title" content="Iris - Native macOS Eye Care & 20-20-20 Break Reminder">
+  <meta property="twitter:description" content="Prevent digital eye strain on Mac with native 20-20-20 breaks, liquid glass menu bar UI, and Force Touch trackpad haptics.">
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/harshwardhangalande/Iris/main/docs/screenshots/mockup_popover.jpg">
+
+  <!-- Schema.org JSON-LD Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Iris",
+    "operatingSystem": "macOS 13.0 or later (Ventura, Sonoma, Sequoia)",
+    "applicationCategory": "HealthApplication",
+    "description": "Native macOS break reminder and eye-strain prevention application using the 20-20-20 rule and Force Touch trackpad haptics.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "downloadUrl": "https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.dmg",
+    "softwareVersion": "2.0.0",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "ratingCount": "12"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: rgba(22, 24, 30, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f5f5f7;
+      --text-muted: #8e8e93;
+      --accent: #2997ff;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { 
+      scroll-behavior: smooth; 
+      scroll-padding-top: 64px;
+    }
+    #hero {
+      scroll-margin-top: 0px;
+    }
+    #showcase, #features, #faq {
+      scroll-margin-top: 64px;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       1. Top Fixed Navigation Bar (animate-ui style)
+       ========================================================================== */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      z-index: 100;
+      background: rgba(9, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+    }
+    .nav-container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      display: block;
+    }
+    .nav-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .nav-link {
+      color: #8e8e93;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    .nav-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .nav-github-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .nav-star-pill {
+      color: #ff9f0a;
+      font-size: 12px;
+      margin-left: 2px;
+    }
+
+    /* ==========================================================================
+       2. Fullscreen Intro Splash (Moves to Top Left)
+       ========================================================================== */
+    .intro-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      background: transparent;
+    }
+    .intro-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      transform: scale(1.6);
+      filter: blur(12px);
+      will-change: transform, opacity, filter;
+    }
+    .intro-brand .intro-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+      display: block;
+    }
+    .intro-brand .intro-title {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       3. Main Hero Viewport (Exact animate-ui Format, 100vh Full Screen)
+       ========================================================================== */
+    .hero-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 90px 24px 40px;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .hero-inner {
+      max-width: 880px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Segmented pill selector [  macOS Native | 100% Open Source ] */
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      margin-bottom: 24px;
+      font-size: 12.5px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    .pill-active {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .pill-inactive {
+      padding: 4px 10px;
+      color: #8e8e93;
+    }
+
+    /* Headline & Subtitle */
+    .hero-title {
+      font-size: 54px;
+      font-weight: 700;
+      letter-spacing: -1.6px;
+      line-height: 1.14;
+      margin-bottom: 18px;
+      color: #ffffff;
+    }
+    .hero-title-accent {
+      background: linear-gradient(180deg, #ffffff 40%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 18.5px;
+      color: #8e8e93;
+      max-width: 660px;
+      line-height: 1.55;
+      margin: 0 auto 28px;
+      font-weight: 400;
+    }
+
+    /* Install Tabs (npm, pnpm, yarn, bun -> brew, dmg, zip, source) */
+    .install-tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #8e8e93;
+      font-size: 12.5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .tab-btn:hover {
+      color: #ffffff;
+    }
+    .tab-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* CLI Terminal Command Box */
+    .cli-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(18, 20, 27, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 11px 18px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      max-width: 90vw;
+    }
+    .cli-box code {
+      color: #79c0ff;
+      user-select: all;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cli-prompt {
+      color: #8b949e;
+      font-weight: 600;
+    }
+    .cli-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f0f6fc;
+      padding: 6px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-left: 6px;
+    }
+    .cli-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Action Buttons (Get Started & Browse Primitives) */
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .btn-pill-white {
+      background: #ffffff;
+      color: #000000;
+      border-radius: 999px;
+      font-weight: 600;
+      padding: 13px 26px;
+      font-size: 14.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 24px rgba(255, 255, 255, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-pill-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(255, 255, 255, 0.35);
+    }
+    .btn-pill-dark {
+      background: rgba(255, 255, 255, 0.07);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      font-weight: 500;
+      padding: 13px 26px;
+      font-size: 14.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-pill-dark:hover {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+    }
+
+    /* Technology Row (Base UI, Radix UI, React Aria -> macOS platforms) */
+    .hero-tech-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      color: #71717a;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .hero-tech-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bouncing Scroll Indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #71717a;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      animation: bounceHint 2s infinite ease-in-out;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .scroll-hint:hover {
+      color: #ffffff;
+    }
+    @keyframes bounceHint {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    /* ==========================================================================
+       4. Blur Reveal Primitives & Transitions
+       ========================================================================== */
+    .blur-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(8px);
+      color: inherit;
+      -webkit-text-fill-color: currentColor;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+    .blur-word.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+
+    .hero-fade-item {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(8px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+    .hero-fade-item.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+
+    .reveal-blur {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(8px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+    .reveal-blur.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+
+    /* ==========================================================================
+       5. Showcase Cards (Pushed Below Main Viewport Window)
+       ========================================================================== */
+    .showcase {
+      padding: 60px 0 100px;
+      width: 100%;
+    }
+    .showcase-masonry {
+      column-count: 2;
+      column-gap: 28px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      break-inside: avoid;
+      margin-bottom: 28px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+    .card-image-wrap {
+      position: relative;
+      width: 100%;
+      background: #0d0f14;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .card-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card:hover .card-image-wrap img {
+      transform: scale(1.04);
+    }
+    .card-pin-action {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.22s ease;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #2997ff;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(41, 151, 255, 0.45);
+    }
+    .card:hover .card-pin-action {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .card-content {
+      padding: 24px;
+      text-align: left;
+    }
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    .tag-blue { color: #2997ff; }
+    .tag-purple { color: #bf5af2; }
+    .tag-amber { color: #ff9f0a; }
+    .tag-green { color: #30d158; }
+    .tag-indigo { color: #5e5ce6; }
+    .tag-coral { color: #ff453a; }
+
+    .card-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    .card-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .card-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #a1a1a6;
+    }
+
+    /* ==========================================================================
+       6. Features Section & FAQ
+       ========================================================================== */
+    .features {
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 34px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 16px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .feature-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 28px;
+      border-radius: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      transition: all 0.2s ease;
+    }
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .icon-vision { color: #2997ff; background: rgba(41, 151, 255, 0.1); border: 1px solid rgba(41, 151, 255, 0.22); }
+    .icon-haptics { color: #bf5af2; background: rgba(191, 90, 242, 0.1); border: 1px solid rgba(191, 90, 242, 0.22); }
+    .icon-schedule { color: #ff9f0a; background: rgba(255, 159, 10, 0.1); border: 1px solid rgba(255, 159, 10, 0.22); }
+    .icon-meeting { color: #ff453a; background: rgba(255, 69, 58, 0.1); border: 1px solid rgba(255, 69, 58, 0.22); }
+    .icon-idle { color: #30d158; background: rgba(48, 209, 88, 0.1); border: 1px solid rgba(48, 209, 88, 0.22); }
+    .icon-privacy { color: #5e5ce6; background: rgba(94, 92, 230, 0.1); border: 1px solid rgba(94, 92, 230, 0.22); }
+    .icon-mascot { color: #ff375f; background: rgba(255, 55, 95, 0.1); border: 1px solid rgba(255, 55, 95, 0.22); }
+    .icon-video { color: #64d2ff; background: rgba(100, 210, 255, 0.1); border: 1px solid rgba(100, 210, 255, 0.22); }
+    .feature-item h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .feature-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .faq {
+      padding: 60px 0 100px;
+    }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+    .faq-item h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+      }
+      .intro-splash { display: none !important; }
+      .nav-brand, .nav-right { opacity: 1 !important; filter: none !important; transform: none !important; }
+    }
+
+    /* Fast-path: When page is refreshed mid-scroll or with anchor hash, bypass intro completely */
+    html.no-intro #intro-splash {
+      display: none !important;
+    }
+    html.no-intro #nav-brand,
+    html.no-intro #nav-right {
+      opacity: 1 !important;
+      filter: none !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 36px; }
+      .showcase-masonry { column-count: 1; }
+      .nav-right .nav-link { display: none; }
+      .hero-screen { padding: 90px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    (function() {
+      var isScrolled = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0) > 30;
+      var hash = window.location.hash;
+      var hasHash = hash && hash !== "#hero" && hash !== "#" && hash.length > 1;
+      try {
+        if (isScrolled || hasHash || sessionStorage.getItem("iris_intro_seen") === "1") {
+          document.documentElement.classList.add("no-intro");
+        }
+      } catch(e) {
+        if (isScrolled || hasHash) {
+          document.documentElement.classList.add("no-intro");
+        }
+      }
+    })();
+  </script>
+
+  <!-- Fullscreen Intro Splash Logo (Moves to Top Left) -->
+  <div id="intro-splash" class="intro-splash">
+    <div class="intro-brand" id="intro-brand">
+      <img src="app_icon.png" width="60" height="60" alt="Iris macOS App Icon" class="intro-icon">
+      <span class="intro-title">Iris</span>
+    </div>
+  </div>
+
+  <!-- 1. Top Fixed Navigation Bar (animate-ui style) -->
+  <nav class="site-nav">
+    <div class="nav-container">
+      <a href="#" class="nav-brand" id="nav-brand" style="opacity: 0;">
+        <img src="app_icon.png" width="32" height="32" alt="Iris macOS App Icon" class="nav-icon">
+        <span class="nav-title">Iris</span>
+      </a>
+      <div class="nav-right" id="nav-right" style="opacity: 0; transform: translateX(18px); filter: blur(6px);">
+        <a href="#showcase" class="nav-link">Showcase</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://github.com/harshwardhangalande/Iris" target="_blank" rel="noopener" class="nav-github-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>GitHub</span>
+          <span class="nav-star-pill">★ 1.2k</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. Fullscreen Hero Section (100vh Main Visible Window) -->
+  <header class="hero-screen" id="hero">
+    <div class="hero-inner">
+      
+      <!-- Top Pill Selector [  macOS Native | 100% Free & Open Source ] -->
+      <div class="hero-pill-badge hero-fade-item">
+        <span class="pill-active">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.76 1.04-1.82.93-2.88-.9.04-1.99.6-2.63 1.36-.57.66-.99 1.73-.86 2.76.99.08 2.01-.54 2.56-1.24z"/></svg>
+          macOS Native
+        </span>
+        <span class="pill-inactive">
+          100% Free &amp; Open Source
+        </span>
+      </div>
+
+      <!-- Main Headline (Exact animate-ui Format) -->
+      <h1 class="hero-title" data-blur-text>Protect your eyes on <span class="hero-title-accent">macOS</span> in one native companion</h1>
+
+      <!-- Subtitle -->
+      <p class="subtitle hero-subtitle" data-blur-text>Drop-in eye-care companion engineered around the 20-20-20 rule. Rest reminders, Force Touch trackpad haptics, smart meeting auto-pause, and zero background bloat.</p>
+
+      <!-- Package Manager Installation Tabs -->
+      <div class="install-tabs hero-fade-item">
+        <button class="tab-btn active" data-pm="brew">brew</button>
+        <button class="tab-btn" data-pm="dmg">.dmg</button>
+        <button class="tab-btn" data-pm="zip">.zip</button>
+        <button class="tab-btn" data-pm="source">source</button>
+      </div>
+
+      <!-- Terminal Command Box -->
+      <div class="cli-box hero-fade-item">
+        <span class="cli-prompt">$</span>
+        <code id="cli-text">brew install --cask harshwardhangalande/iris/iris</code>
+        <button class="cli-copy-btn" id="cli-copy-btn" onclick="copyCliCommand()" title="Copy command">
+          <svg id="copy-icon-idle" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <svg id="copy-icon-success" style="display:none;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions hero-fade-item">
+        <a href="https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.dmg" class="btn btn-pill-white">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.76 1.04-1.82.93-2.88-.9.04-1.99.6-2.63 1.36-.57.66-.99 1.73-.86 2.76.99.08 2.01-.54 2.56-1.24z"/></svg>
+          Download for Mac (.dmg)
+        </a>
+        <a href="#showcase" class="btn btn-pill-dark">
+          Browse Features
+        </a>
+      </div>
+
+      <!-- Technology Ecosystem Row -->
+      <div class="hero-tech-row hero-fade-item">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 12h10M12 7v10"/></svg>
+          macOS Ventura, Sonoma, Sequoia
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Apple Silicon &amp; Intel
+        </span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          100% Offline &amp; Private
+        </span>
+      </div>
+
+      <!-- Bouncing Scroll Down Hint -->
+      <a href="#showcase" class="scroll-hint hero-fade-item" aria-label="Scroll to showcase">
+        <span>Scroll to Explore</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- ==========================================================================
+         3. Showcase Section (Pushed Below First Fold Window)
+         Clean Card Images - Top Left Badges Removed
+         ========================================================================== -->
+    <section class="showcase" id="showcase">
+      <div class="showcase-masonry" data-stagger-group>
+        
+        <!-- ==================== COLUMN 1 (LEFT) ==================== -->
+        <!-- Card 1 (BIG): Menu Bar Popover -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Preview</span>
+            <img src="screenshots/mockup_popover.jpg" alt="Iris Menu Bar Liquid Glass Popover with Rainbow Screen Score">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-blue">Menu Bar Companion</span>
+            <h3>Liquid Glass Popover</h3>
+            <p>Live resident countdown in your macOS menu bar, fluid sliding carousel between Now and Stats tabs, animated Screen Score rainbow arc gauge with real-time count-up, 4 interchangeable flanking styles (7-Day Sparkline, Companion Buddy, Arc Breakdown, Legend), daily streak flame, and compliance metrics with uniform padding and zero window overlap.</p>
+            <div class="card-pills">
+              <span class="pill">20-20-20 Countdown</span>
+              <span class="pill">Sliding Tab Carousel</span>
+              <span class="pill">Animated Rainbow Gauge</span>
+              <span class="pill">4 Flanking Layouts</span>
+              <span class="pill">Daily Streaks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 (SMALL): Floating Micro-Wellness HUD -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Wellness</span>
+            <img src="screenshots/mockup_wellness.jpg" alt="Iris Floating Micro Wellness Reminders for Water, Blink, Posture, Stretch, and Breath">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-green">Habit Formation</span>
+            <h3>Unified 5-in-1 Wellness Popups</h3>
+            <p>Tactile 3D HUD micro-prompts presenting all 5 wellness actions together: eye blinking, mindful hydration, posture alignment, stretching, and deep breathing. Tailored to 5 nature companions (Ollie, Pip, Koa, Barnaby, Finley) with custom emoji badges, 3D checkmarks, and customizable screen positioning (2%–90%).</p>
+            <div class="card-pills">
+              <span class="pill">5 Nature Mascots</span>
+              <span class="pill">Unified 5-in-1 Stack</span>
+              <span class="pill">3D Tactile Pills</span>
+              <span class="pill">Custom Sliders</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 (BIG): Fullscreen Rest Overlay -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Fullscreen</span>
+            <img src="screenshots/mockup_break.jpg" alt="Iris Cinematic Multi-Display 20-20-20 Rest Overlay">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-purple">Multi-Display Experience</span>
+            <h3>Cinematic Rest Overlay</h3>
+            <p>Non-jarring full-screen coverage across all connected external monitors simultaneously, featuring distance eye relaxation prompts and guided breathing.</p>
+            <div class="card-pills">
+              <span class="pill">Multi-Monitor Sync</span>
+              <span class="pill">Guided Breathing</span>
+              <span class="pill">Gentle &amp; Strict Modes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== COLUMN 2 (RIGHT) ==================== -->
+        <!-- Card 4 (SMALL): Force Touch Trackpad Haptics -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Haptics</span>
+            <img src="screenshots/mockup_haptics.jpg" alt="Iris Force Touch Trackpad Haptic Feedback and Chimes">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-coral">Tactile Sensory Feedback</span>
+            <h3>Trackpad Haptics &amp; Chimes</h3>
+            <p>Physical sensations delivered directly to your MacBook Force Touch trackpad. Feel break start snaps, a gentle heartbeat pulse upon rest completion, and stepping notch countdown ticks.</p>
+            <div class="card-pills">
+              <span class="pill">Force Touch Heartbeat</span>
+              <span class="pill">3-2-1 Countdown Ticks</span>
+              <span class="pill">Gentle Bell &amp; Modern Iris</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 (BIG): Scheduled Planned Breaks -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Schedule</span>
+            <img src="screenshots/mockup_settings.jpg" alt="Iris Planned Breaks Custom Schedule Editor">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-amber">Circadian Rhythms</span>
+            <h3>Scheduled Planned Breaks</h3>
+            <p>Set custom recurring pauses for Lunch, Gym, Afternoon Walks, or Evening Wind Down with precision 24h start times, custom SF Symbols, and day-of-week repeat pills.</p>
+            <div class="card-pills">
+              <span class="pill">24h Schedule</span>
+              <span class="pill">Custom SF Symbols</span>
+              <span class="pill">Weekdays &amp; Weekends</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 (SMALL): Smart Pause & Zero Telemetry -->
+        <div class="card reveal-blur">
+          <div class="card-image-wrap">
+            <span class="card-pin-action">Privacy</span>
+            <img src="screenshots/mockup_smart_pause.jpg" alt="Iris Smart Pause Meeting Detection and Offline Security">
+          </div>
+          <div class="card-content">
+            <span class="card-tag tag-indigo">System Intelligence</span>
+            <h3>Smart Pause &amp; 100% Offline</h3>
+            <p>Intelligently pauses breaks during Zoom, Google Meet, Teams, or FaceTime calls and screen sharing. Fully private with zero network tracking or external telemetry.</p>
+            <div class="card-pills">
+              <span class="pill">Meeting Auto-Pause</span>
+              <span class="pill">IOKit Idle Sensor</span>
+              <span class="pill">Zero Telemetry</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h2 class="section-title" data-blur-text>Why Iris is Different</h2>
+      <p class="section-subtitle" data-blur-text>Crafted natively for macOS without Electron or background bloat.</p>
+
+      <div class="feature-grid" data-stagger-group>
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-vision">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>20-20-20 Vision Rest</h3>
+          <p>Every 20 minutes, 20 seconds of looking 20 feet away to relax eye ciliary muscles and eliminate screen fatigue.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-haptics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="3" width="14" height="18" rx="2.5"/>
+              <path d="M9 17h6"/>
+              <path d="M2 8a6 6 0 0 1 0 8M22 8a6 6 0 0 0 0 8"/>
+            </svg>
+          </div>
+          <h3>Force Touch Trackpad Haptics</h3>
+          <p>Physical tactile feedback on your Mac trackpad: break completion heartbeat pulse, start snap, and 3-2-1 countdown notches.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-schedule">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <circle cx="12" cy="15" r="2"/>
+            </svg>
+          </div>
+          <h3>Custom Planned Breaks</h3>
+          <p>Set custom daily rest periods for Lunch, Gym, or Evening Wind Down with SF Symbols and customizable durations.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-meeting">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/>
+              <rect x="2" y="6" width="14" height="12" rx="2"/>
+              <line x1="2" y1="2" x2="22" y2="22"/>
+            </svg>
+          </div>
+          <h3>Smart Meeting Detection</h3>
+          <p>Automatically detects Zoom, Google Meet, Teams, and FaceTime calls or screen sharing, pausing reminders gracefully.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-idle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <polyline points="12 7 12 12 15 15"/>
+              <path d="M3.6 9h.01M20.4 9h.01"/>
+            </svg>
+          </div>
+          <h3>IOKit HID Idle Detection</h3>
+          <p>Detects when you step away from your Mac, pausing the timer and resetting seamlessly upon your return.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-privacy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>100% Private &amp; Offline</h3>
+          <p>Zero telemetry, zero external network calls, zero accounts. All settings and scores stay strictly on your Mac.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-mascot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5Z"/>
+              <path d="M7 10v1a5 5 0 0 0 10 0v-1"/>
+              <circle cx="9" cy="8" r="1"/>
+              <circle cx="15" cy="8" r="1"/>
+              <path d="M9 18a3 3 0 0 0 6 0"/>
+            </svg>
+          </div>
+          <h3>5 Nature Mascots &amp; Streaks</h3>
+          <p>Choose between Ollie Owl, Pip Frog, Koa Koala, Barnaby Bunny, and Finley Otter with daily streaks, 3D tactile buttons, and confetti celebrations.</p>
+        </div>
+
+        <div class="feature-item reveal-blur">
+          <div class="feature-icon icon-video">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="15" rx="2.5"/>
+              <polygon points="10 9 15 11.5 10 14"/>
+              <path d="m18 19 2 2"/>
+              <path d="m6 19-2 2"/>
+            </svg>
+          </div>
+          <h3>Video Auto-Mute &amp; Edge Glow</h3>
+          <p>Automatically mutes chimes when video is playing full-screen, and provides smooth ambient edge glow warnings before breaks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <h2 class="section-title" data-blur-text>Frequently Asked Questions</h2>
+      <p class="section-subtitle" data-blur-text>Common questions about Iris and eye strain prevention.</p>
+
+      <div class="faq-list" data-stagger-group>
+        <div class="faq-item reveal-blur">
+          <h4>What is the 20-20-20 rule?</h4>
+          <p>The 20-20-20 rule is an optometric guideline: every 20 minutes of screen work, look at an object at least 20 feet (6 meters) away for at least 20 seconds. It relaxes eye muscles and relieves digital eye strain (Computer Vision Syndrome).</p>
+        </div>
+
+        <div class="faq-item reveal-blur">
+          <h4>How does Iris compare to commercial apps like LookAway or Time Out?</h4>
+          <p>Iris is 100% free and open-source under the MIT license. It offers native Liquid Glass menu bar aesthetics, Force Touch trackpad haptics, smart meeting auto-pause, planned breaks, and zero tracking.</p>
+        </div>
+
+        <div class="faq-item reveal-blur">
+          <h4>Does Iris support multiple monitors?</h4>
+          <p>Yes. Iris automatically detects multi-monitor setups and displays full-screen ambient break overlays across all connected displays simultaneously.</p>
+        </div>
+
+        <div class="faq-item reveal-blur">
+          <h4>How do I install Iris?</h4>
+          <p>Download the .dmg installer from the top of this page, open the disk image, and drag Iris into your Applications folder, or install via Homebrew with <code>brew install --cask harshwardhangalande/iris/iris</code>.</p>
+        </div>
+
+        <div class="faq-item reveal-blur">
+          <h4>Can I switch between the minimal classic style and the playful mode?</h4>
+          <p>Yes. Iris includes a one-click style toggle in Settings. You can choose the clean, subtle Apple Liquid Glass aesthetic or enjoy the playful mode with 3D tactile buttons, daily streaks, confetti celebrations, and nature mascots.</p>
+        </div>
+
+        <div class="faq-item reveal-blur">
+          <h4>Who are the 5 nature companions?</h4>
+          <p>Iris includes Ollie the Owl, Pip the Tree Frog, Koa the Zen Koala, Barnaby the Bunny, and Finley the Sea Otter. Each companion features animated breathing, blinks, and encouraging poses that celebrate your healthy habits without guilt or punishment.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal-blur">
+      <p>&copy; 2026 Harshwardhan Galande. Licensed under the MIT License.</p>
+      <p><a href="https://github.com/harshwardhangalande/Iris">GitHub Repository</a> • <a href="https://github.com/harshwardhangalande/Iris/releases">Releases</a> • <a href="https://github.com/harshwardhangalande/Iris/issues">Bug Reports</a></p>
+    </footer>
+  </div>
+
+  <!-- Interactive JavaScript Engine -->
+  <script>
+    (function() {
+      // 1. Text splitter for word-by-word blur-in reveal
+      function splitTextIntoWords(element) {
+        if (!element || element.dataset.splitDone) return;
+        element.dataset.splitDone = "true";
+        var text = element.textContent.trim();
+        var words = text.split(/\s+/);
+        element.innerHTML = "";
+        words.forEach(function(word, i) {
+          var span = document.createElement("span");
+          span.className = "blur-word";
+          span.textContent = word;
+          element.appendChild(span);
+          if (i < words.length - 1) {
+            element.appendChild(document.createTextNode(" "));
+          }
+        });
+      }
+
+      function animateWords(container, startDelay, staggerMs) {
+        startDelay = startDelay || 0;
+        staggerMs = staggerMs || 35;
+        var words = container.querySelectorAll(".blur-word");
+        words.forEach(function(word, idx) {
+          var delay = startDelay + idx * staggerMs;
+          word.style.transitionDelay = delay + "ms";
+          requestAnimationFrame(function() {
+            word.classList.add("is-visible");
+          });
+        });
+      }
+
+      // Initialize all data-blur-text elements
+      var textTargets = document.querySelectorAll("[data-blur-text]");
+      textTargets.forEach(function(el) {
+        splitTextIntoWords(el);
+      });
+
+      // 2. Package Manager tab switching
+      var commands = {
+        brew: "brew install --cask harshwardhangalande/iris/iris",
+        dmg: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.dmg",
+        zip: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.zip",
+        source: "git clone https://github.com/harshwardhangalande/Iris.git"
+      };
+
+      document.querySelectorAll(".tab-btn").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          var pm = btn.getAttribute("data-pm");
+          var cmd = commands[pm] || commands.brew;
+          var cliText = document.getElementById("cli-text");
+          if (cliText) cliText.textContent = cmd;
+        });
+      });
+
+      window.copyCliCommand = function() {
+        var cliText = document.getElementById("cli-text");
+        if (!cliText) return;
+        navigator.clipboard.writeText(cliText.textContent.trim());
+        var idleIcon = document.getElementById("copy-icon-idle");
+        var succIcon = document.getElementById("copy-icon-success");
+        if (idleIcon && succIcon) {
+          idleIcon.style.display = "none";
+          succIcon.style.display = "inline";
+          setTimeout(function() {
+            idleIcon.style.display = "inline";
+            succIcon.style.display = "none";
+          }, 2000);
+        }
+      };
+
+      // 3. Fullscreen Intro Logo -> Glides to Top Left Navbar -> Reveals Hero
+      function runIntroAnimation() {
+        var introSplash = document.getElementById("intro-splash");
+        var introBrand = document.getElementById("intro-brand");
+        var navBrand = document.getElementById("nav-brand");
+        var navRight = document.getElementById("nav-right");
+        var heroTitle = document.querySelector(".hero-title");
+        var heroSubtitle = document.querySelector(".hero-subtitle");
+        var heroItems = document.querySelectorAll(".hero-fade-item");
+
+        function bypassIntro() {
+          if (introSplash && introSplash.parentNode) {
+            introSplash.parentNode.removeChild(introSplash);
+          }
+          if (navBrand) navBrand.style.opacity = "1";
+          if (navRight) {
+            navRight.style.opacity = "1";
+            navRight.style.transform = "none";
+            navRight.style.filter = "none";
+          }
+          document.querySelectorAll(".hero-title .blur-word, .hero-subtitle .blur-word, .hero-fade-item, .reveal-blur").forEach(function(el) {
+            el.classList.add("is-visible", "is-revealed");
+          });
+        }
+
+        var isScrolled = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0) > 30;
+        var hash = window.location.hash;
+        var hasHash = hash && hash !== "#hero" && hash !== "#" && hash.length > 1;
+        var alreadySeen = false;
+        try { alreadySeen = sessionStorage.getItem("iris_intro_seen") === "1"; } catch(e) {}
+
+        if (isScrolled || hasHash || alreadySeen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          bypassIntro();
+          return;
+        }
+
+        try { sessionStorage.setItem("iris_intro_seen", "1"); } catch(e) {}
+
+        // Immediate cancel and dock logo if user scrolls before animation finishes
+        var onEarlyScroll = function() {
+          if ((window.scrollY || window.pageYOffset || 0) > 15) {
+            window.removeEventListener("scroll", onEarlyScroll);
+            bypassIntro();
+          }
+        };
+        window.addEventListener("scroll", onEarlyScroll, { passive: true });
+
+        // Phase 1: Reveal in center of screen
+        requestAnimationFrame(function() {
+          if ((window.scrollY || window.pageYOffset || 0) > 30) {
+            bypassIntro();
+            return;
+          }
+          introBrand.style.transition = "opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
+          introBrand.style.opacity = "1";
+          introBrand.style.transform = "scale(1.6)";
+          introBrand.style.filter = "blur(0px)";
+
+          // Phase 2: After user sees Iris in center, glide into the top-left corner
+          setTimeout(function() {
+            if ((window.scrollY || window.pageYOffset || 0) > 30) {
+              bypassIntro();
+              return;
+            }
+            var destRect = navBrand.getBoundingClientRect();
+            var currRect = introBrand.getBoundingClientRect();
+
+            var currCenterX = currRect.left + currRect.width / 2;
+            var currCenterY = currRect.top + currRect.height / 2;
+            var destCenterX = destRect.left + destRect.width / 2;
+            var destCenterY = destRect.top + destRect.height / 2;
+
+            var dx = destCenterX - currCenterX;
+            var dy = destCenterY - currCenterY;
+            var scaleRatio = destRect.height / (currRect.height / 1.6);
+
+            introBrand.style.transition = "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+            introBrand.style.transform = "translate(" + dx + "px, " + dy + "px) scale(" + scaleRatio + ")";
+
+            // Phase 3: Land in top-left, reveal navbar items & hero elements
+            setTimeout(function() {
+              window.removeEventListener("scroll", onEarlyScroll);
+              if (navBrand) navBrand.style.opacity = "1";
+              if (introSplash && introSplash.parentNode) {
+                introSplash.parentNode.removeChild(introSplash);
+              }
+
+              if (navRight) {
+                navRight.style.transition = "opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1)";
+                navRight.style.opacity = "1";
+                navRight.style.transform = "translateX(0px)";
+                navRight.style.filter = "blur(0px)";
+              }
+
+              // Animate hero headline and subtitle
+              if (heroTitle) animateWords(heroTitle, 40, 45);
+              if (heroSubtitle) animateWords(heroSubtitle, 200, 20);
+
+              // Reveal hero interactive items
+              heroItems.forEach(function(item, idx) {
+                setTimeout(function() {
+                  item.classList.add("is-revealed");
+                }, 380 + idx * 75);
+              });
+            }, 800);
+          }, 800);
+        });
+
+        // Fail-safe timeout: ensure full visibility and element removal after 2.0s regardless
+        setTimeout(function() {
+          window.removeEventListener("scroll", onEarlyScroll);
+          bypassIntro();
+        }, 2000);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", runIntroAnimation);
+      } else {
+        runIntroAnimation();
+      }
+
+      // 4. Scroll-Triggered Pull-Up & Blur Reveal for Cards, Features & FAQ
+      if ("IntersectionObserver" in window) {
+        var scrollObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var target = entry.target;
+
+              if (target.hasAttribute("data-blur-text")) {
+                animateWords(target, 40, 35);
+              } else if (target.hasAttribute("data-stagger-group")) {
+                var children = target.querySelectorAll(".reveal-blur");
+                children.forEach(function(child, i) {
+                  setTimeout(function() {
+                    child.classList.add("is-revealed");
+                  }, i * 85);
+                });
+              } else {
+                target.classList.add("is-revealed");
+              }
+
+              observer.unobserve(target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: "0px 0px -40px 0px"
+        });
+
+        document.querySelectorAll("[data-blur-text]:not(.hero-title):not(.hero-subtitle), [data-stagger-group], footer.reveal-blur").forEach(function(el) {
+          scrollObserver.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".reveal-blur, .blur-word").forEach(function(el) {
+          el.classList.add("is-revealed", "is-visible");
+        });
+      }
+
+      // 5. Section-by-Section Direct Snap Controller
+      (function initSectionSnapping() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        var hero = document.getElementById("hero") || document.querySelector(".hero-screen");
+        var showcase = document.getElementById("showcase");
+        var features = document.getElementById("features");
+        var faq = document.getElementById("faq");
+
+        if (!showcase || !features || !faq) return;
+
+        var isSnapping = false;
+        var scrollTimeout = null;
+        var navHeight = 64;
+
+        function getSectionTops() {
+          return {
+            hero: 0,
+            showcase: Math.max(0, showcase.offsetTop - navHeight),
+            features: Math.max(0, features.offsetTop - navHeight),
+            faq: Math.max(0, faq.offsetTop - navHeight)
+          };
+        }
+
+        function smoothScrollTo(targetY) {
+          if (isSnapping) return;
+          isSnapping = true;
+          window.scrollTo({
+            top: targetY,
+            behavior: "smooth"
+          });
+          setTimeout(function() {
+            isSnapping = false;
+          }, 650);
+        }
+
+        // Wheel event interceptor for instant "little scroll" section transitions
+        window.addEventListener("wheel", function(e) {
+          if (isSnapping) {
+            e.preventDefault();
+            return;
+          }
+
+          var currentY = window.scrollY;
+          var tops = getSectionTops();
+          var delta = e.deltaY;
+
+          // 1. From Hero -> down to Showcase on ANY little downward scroll
+          if (currentY < tops.showcase * 0.45 && delta > 5) {
+            e.preventDefault();
+            smoothScrollTo(tops.showcase);
+            return;
+          }
+
+          // 2. From Showcase top -> up to Hero on little upward scroll
+          if (currentY <= tops.showcase + 30 && currentY >= tops.showcase - 40 && delta < -5) {
+            e.preventDefault();
+            smoothScrollTo(0);
+            return;
+          }
+
+          // 3. At bottom of Showcase -> down to Features
+          var showcaseBottom = tops.showcase + showcase.offsetHeight;
+          var maxScrollShowcase = Math.max(tops.showcase, showcaseBottom - window.innerHeight);
+          if (currentY >= maxScrollShowcase - 25 && currentY < tops.features - 30 && delta > 10) {
+            e.preventDefault();
+            smoothScrollTo(tops.features);
+            return;
+          }
+
+          // 4. Near top of Features -> up to Showcase (bottom of showcase)
+          if (currentY <= tops.features + 25 && currentY >= tops.features - 40 && delta < -10) {
+            e.preventDefault();
+            smoothScrollTo(maxScrollShowcase);
+            return;
+          }
+
+          // 5. At bottom of Features -> down to FAQ
+          var featuresBottom = tops.features + features.offsetHeight;
+          var maxScrollFeatures = Math.max(tops.features, featuresBottom - window.innerHeight);
+          if (currentY >= maxScrollFeatures - 25 && currentY < tops.faq - 30 && delta > 10) {
+            e.preventDefault();
+            smoothScrollTo(tops.faq);
+            return;
+          }
+
+          // 6. Near top of FAQ -> up to Features (bottom of features)
+          if (currentY <= tops.faq + 25 && currentY >= tops.faq - 40 && delta < -10) {
+            e.preventDefault();
+            smoothScrollTo(maxScrollFeatures);
+            return;
+          }
+        }, { passive: false });
+
+        // Touch swipe support for trackpads and mobile
+        var touchStartY = 0;
+        window.addEventListener("touchstart", function(e) {
+          if (e.touches.length > 0) touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener("touchend", function(e) {
+          if (isSnapping || e.changedTouches.length === 0) return;
+          var touchEndY = e.changedTouches[0].clientY;
+          var deltaY = touchStartY - touchEndY;
+          var currentY = window.scrollY;
+          var tops = getSectionTops();
+
+          if (Math.abs(deltaY) < 25) return;
+
+          if (currentY < tops.showcase * 0.45 && deltaY > 25) {
+            smoothScrollTo(tops.showcase);
+          } else if (currentY <= tops.showcase + 40 && deltaY < -25) {
+            smoothScrollTo(0);
+          }
+        }, { passive: true });
+
+        // Settle handler: prevents stopping "in between while scrolling"
+        function handleScrollSettle() {
+          if (isSnapping) return;
+          var currentY = window.scrollY;
+          var tops = getSectionTops();
+
+          // Between Hero and Showcase
+          if (currentY > 40 && currentY < tops.showcase - 40) {
+            if (currentY < tops.showcase * 0.45) {
+              smoothScrollTo(0);
+            } else {
+              smoothScrollTo(tops.showcase);
+            }
+          }
+        }
+
+        if ("onscrollend" in window) {
+          window.addEventListener("scrollend", handleScrollSettle);
+        } else {
+          window.addEventListener("scroll", function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(handleScrollSettle, 140);
+          }, { passive: true });
+        }
+      })();
+    })();
+  </script>
+
+</body>
+</html>
