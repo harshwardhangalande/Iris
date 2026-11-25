@@ -58,9 +58,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 ## ✨ Core Features
 
 ### 1. Liquid Glass Menu Bar Popover, Notch Whisper & Animated Screen Score
-* **Live Resident Countdown & Hideable Timer**: Displays remaining work time (`18m`) or break duration (`20s`) alongside the monochrome Iris template emblem, with an option in Settings & the gear menu to hide the countdown text.
-* **Adaptive Notch Whisper**: Subtle obsidian bezel lip that peeks out smoothly below your MacBook notch (or top-center menu bar) ahead of breaks and on pause resume, expanding on hover with **Rest Now** and **Snooze 5m** controls—and toggleable on/off in Settings.
-* **Fluid Sliding Tab Carousel & 4-Node Constellation**: Seamless spring glide between the **Now** view (clickable mascot pet reactions, identity rank, Rest Shield indicator, and 4-node daily **Eyes · Water · Posture · Move** constellation) and the **Stats** dashboard.
+* **Live Resident Countdown & Rolling Digits**: Displays remaining work time (`18m`) or break duration (`20s`) alongside the monochrome Iris template emblem, paired with smooth rolling `numericText` countdown digits inside the popover.
+* **Liquid Island Notch Whisper & Typing Grace**: Alcove-inspired obsidian lip that springs seamlessly out of your MacBook notch (with blur-in reveal and warm amber final-5s shift), waits gently when you're mid-sentence (`Finishing thought...` typing grace up to 15s), peeks non-blocking **Welcome Back** toasts with 1-tap **Undo Reset** after long idle breaks, and expands on hover with **Rest Now** and **Snooze 5m**.
+* **Fluid Sliding Tab Carousel & 4-Node Constellation**: Seamless spring glide between the **Now** view (cursor-tracking mascot gaze, clickable pet reactions, luminous 4-node **Eyes · Water · Posture · Move** constellation with ascending pentatonic win chimes, and glowing streak pill) and the **Stats** dashboard.
 * **Animated Rainbow Screen Score Gauge**: Sweeps in with a cascading circular semicircle on opening, styled in the **Biophilic Sage & Hearth Amber** ergonomic palette on low-halation graphite surfaces (`#181C23`) with 5 layout options (*Ring Breakdown*, *Mascot Companion*, *7-Day Sparkline*, *Activity Legend*, *Minimal*).
 * **Accurate Ocular Health Calculation & Rest Shields**: Penalties apply strictly for skipped breaks, recovery credits reward completed micro-habits, and **Rest Shields** (plus **Crunch / Weekend Pause**) protect your daily streak from unexpected crunch days.
 * **Zero-Overlap Native Glass**: Built with macOS `NSVisualEffectView` behind-window blending and symmetrical card padding matching macOS Ventura, Sonoma & Sequoia.
@@ -73,6 +73,7 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 * **Playful / Classic Switcher**: One-click style toggle in Settings to switch between Playful mode and sleek Classic Liquid Glass minimalism.
 
 ### 3. 20-20-20 Rest & Long Breaks
+* **Frosted Blur-to-Calm Entry & Guided Breathing Halo**: Entering a break settles smoothly via frosted focus-ramp depth (`Blur-to-Calm`), accompanied by an optional 4-3-5 guided breathing halo (`Inhale · Soften gaze` → `Hold · Look 20 ft away` → `Exhale · Relax eyes`) and your interactive Sanctuary desk props.
 * **Short Breaks (20-20-20 Rule)**: Automatically triggers every 20 minutes for 20 seconds with breathing and distance relaxation prompts.
 * **Long Rest Cycles**: Configurable longer breaks (e.g. 5 minutes every hour) to stretch, hydrate, and move.
 * **Multi-Display Coverage**: Covers all connected external monitors and laptops simultaneously at `.screenSaver` window level.
