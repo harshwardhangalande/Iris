@@ -57,32 +57,20 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 
 ## ✨ Core Features
 
-### 1. Liquid Glass Menu Bar Popover & Animated Screen Score
-* **Live Resident Countdown**: Displays remaining work time (`18m`) or break duration (`20s`) directly in the macOS menu bar.
-* **Fluid Sliding Tab Carousel**: Seamless spring glide between the resident **Now** countdown and detailed **Stats** dashboard, with a locked segmented control indicator and synchronized direction-aware sliding content.
-* **Animated Rainbow Screen Score Gauge**: Sweeps in with a cascading circular semicircle on opening, featuring live real-time score count-up, multi-arc health breakdown, and ambient neon glow.
-* **4 Interchangeable Flanking Layouts**: Personalize your Stats tab in Settings with:
-  * 📊 **7-Day Sparkline**: Daily volume trend bars with rolling 7-day average and personal best.
-  * 🐨 **Companion Buddy**: Active mascot character avatar with daily motivational wellness wisdom.
-  * 🌈 **Arc Breakdown**: Dual concentric gauge arcs displaying Break Compliance and Daily Wellness ratio.
-  * 🏷️ **Legend Grid**: Color-coded score category index (Optimal, Good, Moderate, High Strain).
-  * 🎯 **Minimal**: Pure focus on the central circular rainbow gauge.
-* **Accurate Ocular Health Calculation**: Penalties are deducted strictly for skipped breaks with recovery credits awarded for completed wellness micro-habits—eliminating misleading 100% scores.
-* **Symmetrical 16pt Card Border Padding**: Balanced, uniform padding across both Now and Stats tabs for a clean, native macOS look.
-* **Zero-Overlap Native Glass**: Built with macOS `NSVisualEffectView` behind-window blending for blur and depth matching macOS Sonoma & Sequoia.
+### 1. Liquid Glass Menu Bar Popover, Notch Whisper & Animated Screen Score
+* **Live Resident Countdown & Hideable Timer**: Displays remaining work time (`18m`) or break duration (`20s`) alongside the monochrome Iris template emblem, with an option in Settings & the gear menu to hide the countdown text.
+* **Adaptive Notch Whisper**: Subtle obsidian bezel lip that peeks out smoothly below your MacBook notch (or top-center menu bar) ahead of breaks and on pause resume, expanding on hover with **Rest Now** and **Snooze 5m** controls—and toggleable on/off in Settings.
+* **Fluid Sliding Tab Carousel & 4-Node Constellation**: Seamless spring glide between the **Now** view (clickable mascot pet reactions, identity rank, Rest Shield indicator, and 4-node daily **Eyes · Water · Posture · Move** constellation) and the **Stats** dashboard.
+* **Animated Rainbow Screen Score Gauge**: Sweeps in with a cascading circular semicircle on opening, styled in the **Biophilic Sage & Hearth Amber** ergonomic palette on low-halation graphite surfaces (`#181C23`) with 5 layout options (*Ring Breakdown*, *Mascot Companion*, *7-Day Sparkline*, *Activity Legend*, *Minimal*).
+* **Accurate Ocular Health Calculation & Rest Shields**: Penalties apply strictly for skipped breaks, recovery credits reward completed micro-habits, and **Rest Shields** (plus **Crunch / Weekend Pause**) protect your daily streak from unexpected crunch days.
+* **Zero-Overlap Native Glass**: Built with macOS `NSVisualEffectView` behind-window blending and symmetrical card padding matching macOS Ventura, Sonoma & Sequoia.
 
-### 2. Nature Mascots & Playful Mode
-* **5 Unique Nature Companions**: Choose your favorite desk buddy in Settings:
-  * 🦉 **Ollie the Owl**: Wise, observant guide with expressive animated blinks and encouraging glances.
-  * 🐸 **Pip the Tree Frog**: Cheerful, vibrant companion with leafy accents and gentle bouncing idle poses.
-  * 🐨 **Koa the Zen Koala**: Calm eucalyptus lover reminding you to breathe, relax your jaw, and un-clench.
-  * 🐰 **Barnaby the Bunny**: Curious and energetic friend celebrating every micro-habit completion.
-  * 🦦 **Finley the Sea Otter**: Playful swimmer with aquatic micro-expressions cheering you through work sprints.
-* **Unified 5-in-1 Mascot Popups**: Selecting any character immediately presents all 5 wellness reminders together (Posture, Water, Blink, Stretch, and Breath) in a tactile 3D card stack tailored to that character with custom emoji badges and accessory titles (`SPINE ALIGN`, `OWL HYDRATE`, `LILYPAD POISE`, `ZEN TEA`, `PERK EARS`, `SEA SPLASH`).
-* **In-Settings Character Showcase**: Interactive character switcher cards with real-time mood expression tester (*Idle*, *Break*, *Celebrate*, *Sleepy*) and a unified 5-card popup preview gallery.
-* **Pressable 3D Tactile Buttons**: Chunky, rounded buttons with physical spring depth and haptic depress on click.
-* **Daily Streaks & Milestone Celebrations**: Flame counter tracking consecutive days of eye care discipline, daily break goals, and full-screen confetti bursts upon break completion.
-* **Playful / Classic Switcher**: One-click style toggle in Settings to switch between tactile Playful visuals and sleek Apple Liquid Glass minimalism.
+### 2. Nature Mascots, Companion Sanctuary & Behavioral Psychology
+* **5 Unique Nature Companions & 25 Choreographed Emotes**: Choose between **Ollie (Owl)**, **Pip (Tree Frog)**, **Koa (Zen Koala)**, **Barnaby (Bunny)**, and **Finley (Sea Otter)**—each performing **5 unique articulated emotes** across Posture, Water, Blink, Stretch, and Breath popups.
+* **Sequential Swipe-to-Dismiss Popups & 2-Second Tiny Habits**: Popups appear one by one without overlap, adapt copy to time of day and focus rhythm, include a frictionless **2s Tiny Win** quick-credit chip (`2s Sip`, `3× Blink`, `Drop Shoulders`, `Quick Reach`, `1 Exhale`), and dismiss cleanly with a **right swipe** on trackpad or mouse.
+* **Companion Sanctuary & Reflective Identity**: Completed rests permanently unlock desk habitat props (*Matcha Mug*, *Sage Fern*, *Amber Lamp*, *Horizon Star*, *Zen Cushion*) and advance your Identity Rank (*Mindful Starter* → *Master of Flow*).
+* **Eye-Ergonomic Color Themes & Tactile 3D Buttons**: Select between **Sage & Amber** *(Option A default)*, **Indigo & Apricot**, and **Matcha & Iris** palettes, paired with pressable 3D spring buttons and **Peak-End Break Finale** celebrations.
+* **Playful / Classic Switcher**: One-click style toggle in Settings to switch between Playful mode and sleek Classic Liquid Glass minimalism.
 
 ### 3. 20-20-20 Rest & Long Breaks
 * **Short Breaks (20-20-20 Rule)**: Automatically triggers every 20 minutes for 20 seconds with breathing and distance relaxation prompts.
@@ -147,16 +135,16 @@ brew install --cask harshwardhangalande/iris/iris
 
 ### Option 2: DMG Installer
 Download the latest disk image from the [Releases Page](https://github.com/harshwardhangalande/Iris/releases/latest):
-* ⬇️ **[Download Iris-v2.0.0.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.dmg)**
+* ⬇️ **[Download Iris-v3.0.0.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg)**
 * Open the DMG and drag **Iris** to your **Applications** folder.
 
 ### Option 3: Direct Zip
-* ⬇️ **[Download Iris-v2.0.0.zip](https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.zip)**
+* ⬇️ **[Download Iris-v3.0.0.zip](https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.zip)**
 * Extract and move `Iris.app` into `/Applications`.
 
 ### Option 4: Terminal One-Liner
 ```bash
-curl -sL "https://github.com/harshwardhangalande/Iris/releases/download/v2.0.0/Iris-v2.0.0.dmg" -o "/tmp/Iris.dmg" && \
+curl -sL "https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg" -o "/tmp/Iris.dmg" && \
 hdiutil attach "/tmp/Iris.dmg" -nobrowse -mountpoint "/Volumes/Iris" && \
 cp -R "/Volumes/Iris/Iris.app" "/Applications/" && \
 hdiutil detach "/Volumes/Iris" && rm "/tmp/Iris.dmg"
