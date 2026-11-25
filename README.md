@@ -103,9 +103,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 * **Firm**: Requires holding the skip button for 3 seconds to prevent accidental or impulsive skips.
 * **Strict**: Unskippable break screen ensuring full eye relaxation.
 
-### 8. Sequential Swipeable Wellness Popups & 2s Tiny Habits
-* One-by-one sequential micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
-* **Right-Swipe to Dismiss & 2-Second Tiny Habits**: Swipe right smoothly on any floating popup pill to dismiss previews, or tap the low-friction habit chip (`2s Sip`, `Drop Shoulders`, `Slow Exhale`) for instant wellness credit.
+### 8. Compact Swipeable Wellness Popups & 2s Tiny Habits
+* One-by-one sequential, compact, tick-free micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
+* **Right-Swipe to Dismiss & 2-Second Tiny Habits**: Tap anywhere on a popup pill to complete, swipe right to dismiss previews, or tap the compact habit chip (`2s Sip`, `3× Blink`, `Drop`, `Reach`, `Exhale`) for instant wellness credit.
 * **Custom Screen Positioning**: In-app vertical (2% to 90%) and horizontal position sliders with smooth, unclipped ambient bloom.
 
 ---
