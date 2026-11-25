@@ -45,9 +45,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 | :---: | :---: |
 | <img src="docs/screenshots/popover_stats.png" width="440" alt="Iris Menu Bar Popover with Rainbow Screen Score and Stats" /> | <img src="docs/screenshots/popover_now.png" width="440" alt="Iris Menu Bar Popover Active Work Countdown and Nature Companion" /> |
 
-| Unified 5-in-1 Mascot Popups | Full-Screen 20-20-20 Rest Overlay |
+| Notch Whisper, Swipe Popups & Themes | Full-Screen 20-20-20 Rest Overlay |
 | :---: | :---: |
-| <img src="docs/screenshots/mascot_showcase.png" width="440" alt="Iris Nature Mascot Companions with Unified 5-in-1 Wellness Popups" /> | <img src="docs/screenshots/break_overlay.jpg" width="440" alt="Iris Full-Screen 20-20-20 Break Overlay on macOS" /> |
+| <img src="docs/screenshots/mascot_showcase.png" width="440" alt="Iris Notch Whisper, Swipeable 2-Second Wellness Habits and Ergonomic Themes" /> | <img src="docs/screenshots/break_overlay.jpg" width="440" alt="Iris Full-Screen 20-20-20 Break Overlay on macOS" /> |
 
 | Scheduled Planned Breaks Editor | Force Touch Trackpad Haptics & Sounds |
 | :---: | :---: |
@@ -103,9 +103,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 * **Firm**: Requires holding the skip button for 3 seconds to prevent accidental or impulsive skips.
 * **Strict**: Unskippable break screen ensuring full eye relaxation.
 
-### 8. Floating Wellness HUD Reminders
-* Micro-reminders for **Blinking**, **Drinking Water**, **Deep Breathing**, and **Posture Correction**.
-* Five physical animation styles: *Playful Mascot Bounce*, *Liquid Glass Pill*, *Glowing Glass Orb*, *Hold-to-Complete*, and *Combined Stack*.
+### 8. Sequential Swipeable Wellness Popups & 2s Tiny Habits
+* One-by-one sequential micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
+* **Right-Swipe to Dismiss & 2-Second Tiny Habits**: Swipe right smoothly on any floating popup pill to dismiss previews, or tap the low-friction habit chip (`2s Sip`, `Drop Shoulders`, `Slow Exhale`) for instant wellness credit.
 * **Custom Screen Positioning**: In-app vertical (2% to 90%) and horizontal position sliders with smooth, unclipped ambient bloom.
 
 ---
@@ -118,6 +118,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 | **Native macOS Architecture** | **SwiftUI + AppKit (Universal)** | Swift | Swift | Often Electron |
 | **Force Touch Trackpad Haptics** | **Yes (Heartbeat, ticks, snaps)** | No | No | No |
 | **Liquid Glass Menu Bar UI** | **Yes (Sonoma/Sequoia blur)** | Yes | No | No |
+| **Adaptive Notch Whisper** | **Yes (Hover Expand + Toggle)** | No | No | No |
+| **Swipe Popups & 25 Mascot Emotes** | **Yes (5 Companions + Sanctuary)** | No | No | No |
+| **Rest Shields & Ergonomic Palettes** | **Yes (3 Palettes + Peak-End Finale)** | No | No | No |
 | **Multi-Display Fullscreen Overlay** | **Yes** | Yes | Yes | Rarely |
 | **Meeting & Screen Share Auto-Pause** | **Yes** | Yes | Partial | No |
 | **Hardware HID Idle Detection** | **Yes** | Yes | Yes | No |
@@ -168,8 +171,6 @@ No. Iris is written in pure native Swift with no web wrappers (Electron/Chromium
 
 ### Is my activity tracked or sent to the cloud?
 No. Iris operates 100% locally on your machine. All settings and eye health scores are stored locally in macOS `UserDefaults`. No network requests are made, no user analytics are collected, and no accounts are required.
-
----
 
 ---
 
