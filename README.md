@@ -19,6 +19,7 @@
 </p>
 
 <p align="center">
+  <a href="#-whats-new-in-v310">What's New</a> •
   <a href="#-quick-download">Quick Download</a> •
   <a href="#-features">Features</a> •
   <a href="#-screenshots">Screenshots</a> •
@@ -36,6 +37,15 @@
 Built natively in **SwiftUI** and **AppKit** with Apple's Liquid Glass aesthetics, Iris automatically guides you through the scientifically proven **20-20-20 rule**: *every 20 minutes, look at an object 20 feet (6 meters) away for at least 20 seconds*.
 
 Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, runs entirely without dock clutter (`LSUIElement = true`), respects your privacy with **zero telemetry or analytics**, and integrates deeply with native macOS technologies like **Force Touch Trackpad Haptics**, **IOKit HID Idle Detection**, and **CoreAudio / MediaRemote**.
+
+---
+
+## 🆕 What's New in v3.1.0
+
+* **Inline Monthly Insights Calendar**: Click the top-left **Calendar** icon in the `Stats` tab to smoothly unfold a full-month analytics view inside the menu bar popover — featuring a 4-tile monthly summary strip (**Avg Score**, **Active Time**, **Rests**, **Habits**), a color-coded daily heatmap grid, tap-to-inspect day navigation, and responsive forward/back day arrows.
+* **Interactive Identity Rank Ladder & 3-Ring Screen Score**: Click your **Identity Rank** badge (`Mindful Starter` `0–4` → `Focus Apprentice` `5–19` → `Rhythm Keeper` `20–49` → `Vision Guardian` `50–99` → `Master of Flow` `100+`) to open the full rank progression chart, and click **What is screen score?** for the **3 Rainbow Gauge Rings** legend (*Outer Violet*: Overall Screen Score %, *Middle Amber*: Break Compliance, *Inner Teal*: Micro-Habits `0–8`).
+* **Decluttered Liquid Glass & Circular Wellness Pills**: Unified continuous squircle card geometry across the popover, break overlays, and Settings while reserving floating Hero `Capsule` CTAs, restored sleek circular `Capsule` wellness reminder pills, eliminated duplicate gauge score labels, added breathing room above `Optimal`, and aligned the `7-Day Trend` & `Week Avg` flank cards.
+* **Reliable Browser Video Auto-Pause**: Upgraded `MediaPlaybackManager` with CoreAudio per-process output monitoring (`kAudioHardwarePropertyProcessObjectList`), multi-client `MediaRemote` dispatching, pause-before-mute sequencing, and Accessibility keyboard fallback so embedded & HLS browser streams (Safari, Brave, Chrome, Edge, Arc, Firefox) reliably pause even alongside paused background media players.
 
 ---
 
@@ -57,18 +67,19 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 
 ## ✨ Core Features
 
-### 1. Liquid Glass Menu Bar Popover, Notch Whisper & Animated Screen Score
+### 1. Liquid Glass Menu Bar Popover, Monthly Calendar & 3-Ring Screen Score
 * **Live Resident Countdown & Rolling Digits**: Displays remaining work time (`18m`) or break duration (`20s`) alongside the monochrome Iris template emblem, paired with smooth rolling `numericText` countdown digits inside the popover.
+* **Inline Monthly Insights Calendar & Day Switcher**: Click the top-left **Calendar** icon on the `Stats` tab to smoothly unfold a full-month dashboard inside the menu bar card—showing **Avg Score**, **Active Time**, **Rests**, and **Habits** KPIs alongside a tap-to-inspect heatmap grid and seamless `<` / `>` day navigation.
 * **Liquid Island Notch Whisper & Typing Grace**: Alcove-inspired obsidian lip that springs seamlessly out of your MacBook notch (with blur-in reveal and warm amber final-5s shift), waits gently when you're mid-sentence (`Finishing thought...` typing grace up to 15s), peeks non-blocking **Welcome Back** toasts with 1-tap **Undo Reset** after long idle breaks, and expands on hover with **Rest Now** and **Snooze 5m**.
 * **Fluid Sliding Tab Carousel & 4-Node Constellation**: Seamless spring glide between the **Now** view (cursor-tracking mascot gaze, clickable pet reactions, luminous 4-node **Eyes · Water · Posture · Move** constellation with ascending pentatonic win chimes, and glowing streak pill) and the **Stats** dashboard.
-* **Animated Rainbow Screen Score Gauge**: Sweeps in with a cascading circular semicircle on opening, styled in the **Biophilic Sage & Hearth Amber** ergonomic palette on low-halation graphite surfaces (`#181C23`) with 5 layout options (*Ring Breakdown*, *Mascot Companion*, *7-Day Sparkline*, *Activity Legend*, *Minimal*).
+* **Decluttered 3-Ring Rainbow Screen Score Gauge**: Sweeps in with 3 concentric rings—**Outer Violet** (*Overall Screen Score %*), **Middle Amber** (*Break Compliance*), and **Inner Teal** (*Micro-Habits 0–8*)—flanked symmetrically by aligned **7-Day Trend** & **Week Avg** cards, extra breathing space above the **Optimal** pill, and an interactive **What is screen score?** legend.
 * **Accurate Ocular Health Calculation & Rest Shields**: Penalties apply strictly for skipped breaks, recovery credits reward completed micro-habits, and **Rest Shields** (plus **Crunch / Weekend Pause**) protect your daily streak from unexpected crunch days.
-* **Zero-Overlap Native Glass**: Built with macOS `NSVisualEffectView` behind-window blending and symmetrical card padding matching macOS Ventura, Sonoma & Sequoia.
+* **Cohesive Squircle Theme & Hero Capsules**: Built with macOS `NSVisualEffectView` behind-window blending, unified continuous squircle radii across settings and status tiles, and tactile Hero `Capsule` CTAs.
 
-### 2. Nature Mascots, Companion Sanctuary & Behavioral Psychology
+### 2. Nature Mascots, Companion Sanctuary & Identity Rank Ladder
 * **5 Unique Nature Companions & 25 Choreographed Emotes**: Choose between **Ollie (Owl)**, **Pip (Tree Frog)**, **Koa (Zen Koala)**, **Barnaby (Bunny)**, and **Finley (Sea Otter)**—each performing **5 unique articulated emotes** across Posture, Water, Blink, Stretch, and Breath popups.
-* **Sequential Swipe-to-Dismiss Popups & 2-Second Tiny Habits**: Popups appear one by one without overlap, adapt copy to time of day and focus rhythm, include a frictionless **2s Tiny Win** quick-credit chip (`2s Sip`, `3× Blink`, `Drop Shoulders`, `Quick Reach`, `1 Exhale`), and dismiss cleanly with a **right swipe** on trackpad or mouse.
-* **Companion Sanctuary & Reflective Identity**: Completed rests permanently unlock desk habitat props (*Matcha Mug*, *Sage Fern*, *Amber Lamp*, *Horizon Star*, *Zen Cushion*) and advance your Identity Rank (*Mindful Starter* → *Master of Flow*).
+* **Sequential Swipe-to-Dismiss Popups & 2-Second Tiny Habits**: Popups appear one by one in sleek circular `Capsule` pills without overlap, adapt copy to time of day and focus rhythm, include a frictionless **2s Tiny Win** quick-credit chip (`2s Sip`, `3× Blink`, `Drop Shoulders`, `Quick Reach`, `1 Exhale`), and dismiss cleanly with a **right swipe** on trackpad or mouse.
+* **Companion Sanctuary & Interactive Identity Rank Chart**: Completed rests permanently unlock desk habitat props (*Matcha Mug*, *Sage Fern*, *Amber Lamp*, *Horizon Star*, *Zen Cushion*) and advance your **Identity Rank** (*Mindful Starter* `0–4`, *Focus Apprentice* `5–19`, *Rhythm Keeper* `20–49`, *Vision Guardian* `50–99`, *Master of Flow* `100+`). Click your rank badge in the popover or Settings anytime to view the full tier progression chart.
 * **Eye-Ergonomic Color Themes & Tactile 3D Buttons**: Select between **Sage & Amber** *(Option A default)*, **Indigo & Apricot**, and **Matcha & Iris** palettes, paired with pressable 3D spring buttons and **Peak-End Break Finale** celebrations.
 * **Playful / Classic Switcher**: One-click style toggle in Settings to switch between Playful mode and sleek Classic Liquid Glass minimalism.
 
@@ -97,7 +108,7 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 * **Automatic Video Playback Muting**: Detects active full-screen video playback (YouTube, Netflix, QuickTime, VLC, etc.) and automatically mutes reminder audio to prevent interruptions.
 * **Screen Edge Warning Glow**: Displays a gentle ambient edge glow 5s–60s prior to break start with smooth multi-stop gradient falloff.
 * **System Idle Detection**: Uses `IOHIDSystem` (`HIDIdleTime`) to detect when you walk away from your desk, automatically pausing and resetting counters upon your return.
-* **Automatic Media Pause**: Integrates with macOS MediaRemote to pause music or video on break start, and seamlessly resume when the break finishes.
+* **Automatic Media Pause (Browser & Desktop)**: Combines CoreAudio per-process output detection (`kAudioHardwarePropertyProcessObjectList`), multi-client `MediaRemote` dispatching, pause-before-mute sequencing, and Accessibility keyboard fallback to pause music or embedded/HLS browser video players (Safari, Brave, Chrome, Edge, Arc, Firefox, IINA, VLC) when a break starts—even alongside paused background apps—and resumes playback after your break.
 
 ### 7. Discipline Modes
 * **Gentle**: Skip breaks with a single tap or the `Esc` key.
@@ -105,7 +116,7 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 * **Strict**: Unskippable break screen with emergency exit (`⌘⇧Esc`) only.
 
 ### 8. Compact Swipeable Wellness Popups & 2s Tiny Habits
-* One-by-one sequential, compact, tick-free micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
+* One-by-one sequential circular `Capsule` micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
 * **Right-Swipe to Dismiss & 2-Second Tiny Habits**: Tap anywhere on a popup pill to complete, swipe right to dismiss previews, or tap the compact habit chip (`2s Sip`, `3× Blink`, `Drop`, `Reach`, `Exhale`) for instant wellness credit.
 * **Custom Screen Positioning**: In-app vertical (2% to 90%) and horizontal position sliders with smooth, unclipped ambient bloom.
 
@@ -119,9 +130,12 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 | **Native macOS Architecture** | **SwiftUI + AppKit (Universal)** | Swift | Swift | Often Electron |
 | **Force Touch Trackpad Haptics** | **Yes (Heartbeat, ticks, snaps)** | No | No | No |
 | **Liquid Glass Menu Bar UI** | **Yes (Sonoma/Sequoia blur)** | Yes | No | No |
+| **Inline Monthly Insights Calendar** | **Yes (Heatmap + Avg/Rests/Habits)** | No | No | No |
+| **Identity Rank Chart & 3-Ring Score** | **Yes (Starter → Master of Flow)** | No | No | No |
 | **Adaptive Notch Whisper** | **Yes (Hover Expand + Toggle)** | No | No | No |
 | **Swipe Popups & 25 Mascot Emotes** | **Yes (5 Companions + Sanctuary)** | No | No | No |
 | **Rest Shields & Ergonomic Palettes** | **Yes (3 Palettes + Peak-End Finale)** | No | No | No |
+| **Browser Video & Audio Auto-Pause** | **Yes (CoreAudio + MediaRemote)** | Yes | Partial | No |
 | **Multi-Display Fullscreen Overlay** | **Yes** | Yes | Yes | Rarely |
 | **Meeting & Screen Share Auto-Pause** | **Yes** | Yes | Partial | No |
 | **Hardware HID Idle Detection** | **Yes** | Yes | Yes | No |
@@ -139,17 +153,17 @@ brew install --cask harshwardhangalande/iris/iris
 
 ### Option 2: DMG Installer
 Download the latest disk image from the [Releases Page](https://github.com/harshwardhangalande/Iris/releases/latest):
-* ⬇️ **[Download Iris-v3.0.0.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg)**
+* ⬇️ **[Download Iris-v3.1.0.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg)**
 * Open the DMG and drag **Iris** to your **Applications** folder.
 
 ### Option 3: Direct Zip
-* ⬇️ **[Download Iris-v3.0.0.zip](https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.zip)**
+* ⬇️ **[Download Iris-v3.1.0.zip](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.zip)**
 * Extract and move `Iris.app` into `/Applications`.
 
 ### Option 4: Terminal One-Liner
 ```bash
 TMPDIR_IRIS=$(mktemp -d) && MNT_IRIS=$(mktemp -d) && \
-curl -fsSL "https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg" -o "$TMPDIR_IRIS/Iris.dmg" && \
+curl -fsSL "https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg" -o "$TMPDIR_IRIS/Iris.dmg" && \
 hdiutil attach "$TMPDIR_IRIS/Iris.dmg" -nobrowse -mountpoint "$MNT_IRIS" && \
 cp -R "$MNT_IRIS/Iris.app" "/Applications/" && \
 hdiutil detach "$MNT_IRIS" && rm -rf "$TMPDIR_IRIS" "$MNT_IRIS"
