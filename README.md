@@ -31,7 +31,7 @@
 
 ## 🎯 What is Iris?
 
-**Iris** is an open-source, menu bar resident macOS utility engineered to combat Computer Vision Syndrome (CVS), headaches, and eye fatigue caused by prolonged screen time. 
+**Iris** is a lightweight, menu bar resident macOS freeware utility engineered to combat Computer Vision Syndrome (CVS), headaches, and eye fatigue caused by prolonged screen time. 
 
 Built natively in **SwiftUI** and **AppKit** with Apple's Liquid Glass aesthetics, Iris automatically guides you through the scientifically proven **20-20-20 rule**: *every 20 minutes, look at an object 20 feet (6 meters) away for at least 20 seconds*.
 
@@ -100,8 +100,8 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 
 ### 7. Discipline Modes
 * **Gentle**: Skip breaks with a single tap or the `Esc` key.
-* **Firm**: Requires holding the skip button for 3 seconds to prevent accidental or impulsive skips.
-* **Strict**: Unskippable break screen ensuring full eye relaxation.
+* **Firm**: Enforces a 3-second cooldown before skipping (plus configurable Double-`Esc` skip/snooze action) to prevent accidental or impulsive skips.
+* **Strict**: Unskippable break screen with emergency exit (`⌘⇧Esc`) only.
 
 ### 8. Compact Swipeable Wellness Popups & 2s Tiny Habits
 * One-by-one sequential, compact, tick-free micro-reminders for **Posture Correction**, **Drinking Water**, **Eye Blinking**, **Stretching**, and **Deep Breathing**, starring all 5 mascots with 25 bespoke animated emotes.
@@ -112,9 +112,9 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 
 ## 📊 Feature Comparison
 
-| Feature | Iris (Free & Open Source) | LookAway ($19-$29) | Time Out | Generic Pomodoro |
+| Feature | Iris (Freeware) | LookAway ($19-$29) | Time Out | Generic Pomodoro |
 | :--- | :---: | :---: | :---: | :---: |
-| **Price** | **100% Free & Open Source** | Commercial / Paid | Freemium | Free / Paid |
+| **Price** | **100% Free for Personal Use** | Commercial / Paid | Freemium | Free / Paid |
 | **Native macOS Architecture** | **SwiftUI + AppKit (Universal)** | Swift | Swift | Often Electron |
 | **Force Touch Trackpad Haptics** | **Yes (Heartbeat, ticks, snaps)** | No | No | No |
 | **Liquid Glass Menu Bar UI** | **Yes (Sonoma/Sequoia blur)** | Yes | No | No |
@@ -147,10 +147,11 @@ Download the latest disk image from the [Releases Page](https://github.com/harsh
 
 ### Option 4: Terminal One-Liner
 ```bash
-curl -sL "https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg" -o "/tmp/Iris.dmg" && \
-hdiutil attach "/tmp/Iris.dmg" -nobrowse -mountpoint "/Volumes/Iris" && \
-cp -R "/Volumes/Iris/Iris.app" "/Applications/" && \
-hdiutil detach "/Volumes/Iris" && rm "/tmp/Iris.dmg"
+TMPDIR_IRIS=$(mktemp -d) && MNT_IRIS=$(mktemp -d) && \
+curl -fsSL "https://github.com/harshwardhangalande/Iris/releases/download/v3.0.0/Iris-v3.0.0.dmg" -o "$TMPDIR_IRIS/Iris.dmg" && \
+hdiutil attach "$TMPDIR_IRIS/Iris.dmg" -nobrowse -mountpoint "$MNT_IRIS" && \
+cp -R "$MNT_IRIS/Iris.app" "/Applications/" && \
+hdiutil detach "$MNT_IRIS" && rm -rf "$TMPDIR_IRIS" "$MNT_IRIS"
 ```
 
 ---
