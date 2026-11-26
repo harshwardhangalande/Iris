@@ -16,16 +16,18 @@
   <img src="https://img.shields.io/badge/architecture-Universal%20(Apple%20Silicon%20%26%20Intel)-FF9500?style=flat-square" alt="Architecture Universal">
   <img src="https://img.shields.io/badge/swift-5.9%2B-F05138?style=flat-square" alt="Swift 5.9+">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Freeware-blue?style=flat-square" alt="License Freeware"></a>
+  <a href="https://buymeacoffee.com/harshwardhangalande"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=141005" alt="Buy Me a Coffee"></a>
 </p>
 
 <p align="center">
-  <a href="#-whats-new-in-v310">What's New</a> •
+  <a href="#-whats-new-in-v311">What's New</a> •
   <a href="#-quick-download">Quick Download</a> •
   <a href="#-features">Features</a> •
   <a href="#-screenshots">Screenshots</a> •
   <a href="#-comparison">Comparison</a> •
   <a href="#-faq">FAQ</a> •
-  <a href="https://github.com/harshwardhangalande/Iris/releases">Releases</a>
+  <a href="https://github.com/harshwardhangalande/Iris/releases">Releases</a> •
+  <a href="https://buymeacoffee.com/harshwardhangalande">Buy Me a Coffee ☕</a>
 </p>
 
 ---
@@ -40,10 +42,11 @@ Unlike heavyweight Electron alternatives, Iris consumes virtually **zero CPU**, 
 
 ---
 
-## 🆕 What's New in v3.1.0
+## 🆕 What's New in v3.1.1
 
 * **Inline Monthly Insights Calendar**: Click the top-left **Calendar** icon in the `Stats` tab to smoothly unfold a full-month analytics view inside the menu bar popover — featuring a 4-tile monthly summary strip (**Avg Score**, **Active Time**, **Rests**, **Habits**), a color-coded daily heatmap grid, tap-to-inspect day navigation, and responsive forward/back day arrows.
 * **Interactive Identity Rank Ladder & 3-Ring Screen Score**: Click your **Identity Rank** badge (`Mindful Starter` `0–4` → `Focus Apprentice` `5–19` → `Rhythm Keeper` `20–49` → `Vision Guardian` `50–99` → `Master of Flow` `100+`) to open the full rank progression chart, and click **What is screen score?** for the **3 Rainbow Gauge Rings** legend (*Outer Violet*: Overall Screen Score %, *Middle Amber*: Break Compliance, *Inner Teal*: Micro-Habits `0–8`).
+* **Buy Me a Coffee Support**: Added a creative animated steaming-cup support button across Settings (`About` Spotlight & sidebar footer), Menu Bar popover, gear menu, and GitHub Pages (`buymeacoffee.com/harshwardhangalande`).
 * **Decluttered Liquid Glass & Circular Wellness Pills**: Unified continuous squircle card geometry across the popover, break overlays, and Settings while reserving floating Hero `Capsule` CTAs, restored sleek circular `Capsule` wellness reminder pills, eliminated duplicate gauge score labels, added breathing room above `Optimal`, and aligned the `7-Day Trend` & `Week Avg` flank cards.
 * **Reliable Browser Video Auto-Pause**: Upgraded `MediaPlaybackManager` with CoreAudio per-process output monitoring (`kAudioHardwarePropertyProcessObjectList`), multi-client `MediaRemote` dispatching, pause-before-mute sequencing, and Accessibility keyboard fallback so embedded & HLS browser streams (Safari, Brave, Chrome, Edge, Arc, Firefox) reliably pause even alongside paused background media players.
 
@@ -153,17 +156,17 @@ brew install --cask harshwardhangalande/iris/iris
 
 ### Option 2: DMG Installer
 Download the latest disk image from the [Releases Page](https://github.com/harshwardhangalande/Iris/releases/latest):
-* ⬇️ **[Download Iris-v3.1.0.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg)**
+* ⬇️ **[Download Iris-v3.1.1.dmg](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg)**
 * Open the DMG and drag **Iris** to your **Applications** folder.
 
 ### Option 3: Direct Zip
-* ⬇️ **[Download Iris-v3.1.0.zip](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.zip)**
+* ⬇️ **[Download Iris-v3.1.1.zip](https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.zip)**
 * Extract and move `Iris.app` into `/Applications`.
 
 ### Option 4: Terminal One-Liner
 ```bash
 TMPDIR_IRIS=$(mktemp -d) && MNT_IRIS=$(mktemp -d) && \
-curl -fsSL "https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg" -o "$TMPDIR_IRIS/Iris.dmg" && \
+curl -fsSL "https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg" -o "$TMPDIR_IRIS/Iris.dmg" && \
 hdiutil attach "$TMPDIR_IRIS/Iris.dmg" -nobrowse -mountpoint "$MNT_IRIS" && \
 cp -R "$MNT_IRIS/Iris.app" "/Applications/" && \
 hdiutil detach "$MNT_IRIS" && rm -rf "$TMPDIR_IRIS" "$MNT_IRIS"
@@ -192,6 +195,7 @@ No. Iris operates 100% locally on your machine. All settings and eye health scor
 
 ## 🤝 Feedback & Community
 Feature suggestions, feedback, and bug reports are warmly welcome!
+* Support Iris development on [Buy Me a Coffee](https://buymeacoffee.com/harshwardhangalande).
 * Submit bug reports and feature requests on [GitHub Issues](https://github.com/harshwardhangalande/Iris/issues).
 * Join discussions and share feedback on [GitHub Discussions](https://github.com/harshwardhangalande/Iris/discussions).
 

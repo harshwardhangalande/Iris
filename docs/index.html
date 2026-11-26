@@ -18,14 +18,14 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harshwardhangalande.github.io/Iris/">
-  <meta property="og:title" content="Iris v3.1.0 - Native macOS Eye Care & 20-20-20 Break Reminder">
+  <meta property="og:title" content="Iris v3.1.1 - Native macOS Eye Care & 20-20-20 Break Reminder">
   <meta property="og:description" content="Prevent digital eye strain on Mac with native 20-20-20 breaks, Inline Monthly Insights Calendar, Identity Rank ladder, Notch Whisper alerts, Biophilic Sage & Amber ergonomics, Rest Shields, and Force Touch haptics.">
   <meta property="og:image" content="https://raw.githubusercontent.com/harshwardhangalande/Iris/main/docs/screenshots/mockup_popover.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://harshwardhangalande.github.io/Iris/">
-  <meta property="twitter:title" content="Iris v3.1.0 - Native macOS Eye Care & 20-20-20 Break Reminder">
+  <meta property="twitter:title" content="Iris v3.1.1 - Native macOS Eye Care & 20-20-20 Break Reminder">
   <meta property="twitter:description" content="Prevent digital eye strain on Mac with 20-20-20 breaks, Monthly Insights Calendar, Identity Rank ladder, Notch Whisper alerts, circular wellness pills, Rest Shields, and Force Touch haptics.">
   <meta property="twitter:image" content="https://raw.githubusercontent.com/harshwardhangalande/Iris/main/docs/screenshots/mockup_popover.jpg">
 
@@ -43,8 +43,8 @@
       "price": "0.00",
       "priceCurrency": "USD"
     },
-    "downloadUrl": "https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg",
-    "softwareVersion": "3.1.0",
+    "downloadUrl": "https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg",
+    "softwareVersion": "3.1.1",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
@@ -173,6 +173,39 @@
       color: #ff9f0a;
       font-size: 12px;
       margin-left: 2px;
+    }
+    .nav-coffee-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 221, 0, 0.14), rgba(245, 166, 66, 0.12));
+      border: 1px solid rgba(255, 221, 0, 0.34);
+      color: #ffdd00;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    .nav-coffee-btn:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, rgba(255, 221, 0, 0.22), rgba(245, 166, 66, 0.18));
+      border-color: rgba(255, 221, 0, 0.65);
+      box-shadow: 0 0 22px rgba(255, 221, 0, 0.26);
+    }
+    .nav-coffee-btn .coffee-steam-line {
+      animation: steamRise 2.2s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    .nav-coffee-btn .coffee-steam-line.s2 {
+      animation-delay: 0.7s;
+    }
+    @keyframes steamRise {
+      0%, 100% { transform: translateY(0px); opacity: 0.45; }
+      50% { transform: translateY(-2.2px); opacity: 1; }
     }
 
     /* ==========================================================================
@@ -717,6 +750,174 @@
       line-height: 1.5;
     }
 
+    /* ==========================================================================
+       Creative Support / Buy Me a Coffee Spotlight
+       ========================================================================== */
+    .coffee-spotlight {
+      max-width: 860px;
+      margin: 0 auto 84px;
+      padding: 36px 40px;
+      border-radius: 26px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      background: linear-gradient(135deg, rgba(255, 221, 0, 0.08) 0%, rgba(45, 184, 138, 0.05) 55%, rgba(255, 255, 255, 0.03) 100%);
+      border: 1px solid rgba(255, 221, 0, 0.24);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .coffee-spotlight::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: -110px;
+      left: -80px;
+      background: radial-gradient(circle, rgba(255, 221, 0, 0.20), transparent 70%);
+      pointer-events: none;
+    }
+    .coffee-spotlight::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      bottom: -120px;
+      right: -70px;
+      background: radial-gradient(circle, rgba(45, 184, 138, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+    .coffee-spotlight:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 221, 0, 0.48);
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.55), 0 0 42px rgba(255, 221, 0, 0.12);
+    }
+    .coffee-orb {
+      flex-shrink: 0;
+      width: 118px;
+      height: 118px;
+      border-radius: 28px;
+      background: radial-gradient(circle at 35% 30%, rgba(255, 221, 0, 0.22), rgba(24, 20, 12, 0.92) 72%);
+      border: 1px solid rgba(255, 221, 0, 0.34);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+    .coffee-orb .orb-steam {
+      animation: orbSteamFloat 2.8s ease-in-out infinite;
+    }
+    .coffee-orb .orb-steam.d2 { animation-delay: 0.7s; }
+    .coffee-orb .orb-steam.d3 { animation-delay: 1.4s; }
+    .coffee-orb .orb-sparkle {
+      position: absolute;
+      color: #ffdd00;
+      font-size: 13px;
+      opacity: 0.7;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .coffee-orb .orb-sparkle.sp1 { top: 14px; right: 16px; }
+    .coffee-orb .orb-sparkle.sp2 { bottom: 16px; left: 14px; font-size: 10px; color: #f5a642; }
+    .coffee-spotlight:hover .coffee-orb .orb-sparkle.sp1 {
+      transform: scale(1.25) rotate(14deg);
+      opacity: 1;
+    }
+    .coffee-spotlight:hover .coffee-orb .orb-sparkle.sp2 {
+      transform: scale(1.3) rotate(-14deg);
+      opacity: 1;
+    }
+    @keyframes orbSteamFloat {
+      0% { transform: translateY(3px) scaleY(0.92); opacity: 0.25; }
+      50% { transform: translateY(-4px) scaleY(1.06); opacity: 0.95; }
+      100% { transform: translateY(-9px) scaleY(0.9); opacity: 0; }
+    }
+    .coffee-copy {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .coffee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      color: #ffdd00;
+      background: rgba(255, 221, 0, 0.12);
+      border: 1px solid rgba(255, 221, 0, 0.28);
+      margin-bottom: 12px;
+    }
+    .coffee-copy h3 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin: 0 0 8px;
+    }
+    .coffee-copy p {
+      font-size: 14.5px;
+      line-height: 1.58;
+      color: #a1a1a6;
+      margin: 0 0 20px;
+    }
+    .coffee-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn-coffee-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffea55 0%, #ffdd00 55%, #f5c400 100%);
+      color: #141005;
+      font-weight: 700;
+      font-size: 14.5px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 0 #b88a00, 0 12px 28px rgba(255, 221, 0, 0.25);
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .btn-coffee-hero::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -65%;
+      width: 45%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+      transform: rotate(22deg);
+      transition: left 0.55s ease;
+      pointer-events: none;
+    }
+    .btn-coffee-hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #b88a00, 0 18px 36px rgba(255, 221, 0, 0.38);
+    }
+    .btn-coffee-hero:hover::after {
+      left: 135%;
+    }
+    .btn-coffee-hero:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #b88a00, 0 6px 16px rgba(255, 221, 0, 0.24);
+    }
+    .coffee-note {
+      font-size: 12.5px;
+      color: #8e8e93;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
     footer {
       border-top: 1px solid var(--card-border);
       padding: 40px 0;
@@ -760,6 +961,8 @@
       .showcase-masonry { column-count: 1; }
       .nav-right .nav-link { display: none; }
       .hero-screen { padding: 90px 16px 40px; }
+      .coffee-spotlight { flex-direction: column; text-align: center; padding: 28px 22px; gap: 22px; }
+      .coffee-actions { justify-content: center; }
     }
   </style>
 </head>
@@ -800,6 +1003,15 @@
         <a href="#showcase" class="nav-link">Showcase</a>
         <a href="#features" class="nav-link">Features</a>
         <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://buymeacoffee.com/harshwardhangalande" target="_blank" rel="noopener noreferrer" class="nav-coffee-btn" title="Fuel Iris development on Buy Me a Coffee">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path class="coffee-steam-line" d="M8 3.5c0 1.2-1 1.6-1 2.8"/>
+            <path class="coffee-steam-line s2" d="M12 2.5c0 1.2-1 1.6-1 2.8"/>
+            <path d="M5 9h10v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V9z" fill="currentColor" fill-opacity="0.22"/>
+            <path d="M15 10h2a2.5 2.5 0 0 1 0 5h-2"/>
+          </svg>
+          <span>Coffee</span>
+        </a>
         <a href="https://github.com/harshwardhangalande/Iris" target="_blank" rel="noopener noreferrer" class="nav-github-btn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           <span>GitHub</span>
@@ -820,7 +1032,7 @@
           macOS Native
         </span>
         <span class="pill-inactive">
-          v3.1.0 &bull; 100% Free Mac App
+          v3.1.1 &bull; 100% Free Mac App
         </span>
       </div>
 
@@ -850,9 +1062,9 @@
 
       <!-- Action Buttons -->
       <div class="hero-actions hero-fade-item">
-        <a href="https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg" class="btn btn-pill-white">
+        <a href="https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg" class="btn btn-pill-white">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.76 1.04-1.82.93-2.88-.9.04-1.99.6-2.63 1.36-.57.66-.99 1.73-.86 2.76.99.08 2.01-.54 2.56-1.24z"/></svg>
-          Download v3.1.0 (.dmg)
+          Download v3.1.1 (.dmg)
         </a>
         <a href="#showcase" class="btn btn-pill-dark">
           Browse Features
@@ -1153,9 +1365,44 @@
       </div>
     </section>
 
+    <!-- Creative Buy Me a Coffee Spotlight -->
+    <section class="coffee-spotlight reveal-blur" id="support">
+      <div class="coffee-orb" aria-hidden="true">
+        <span class="orb-sparkle sp1">&#10022;</span>
+        <span class="orb-sparkle sp2">&#10022;</span>
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <path class="orb-steam d1" d="M23 18c0-3 2.5-4.5 2.5-7.5" stroke="#ffdd00" stroke-width="2.4" stroke-linecap="round"/>
+          <path class="orb-steam d2" d="M32 16c0-3.5 2.5-5 2.5-8.5" stroke="#ffdd00" stroke-width="2.4" stroke-linecap="round"/>
+          <path class="orb-steam d3" d="M41 18c0-3 2.5-4.5 2.5-7.5" stroke="#f5a642" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="16" y="23" width="28" height="24" rx="8" fill="#ffdd00" fill-opacity="0.18" stroke="#ffdd00" stroke-width="2.4"/>
+          <path d="M20 26h20c0 2.6-4.5 4.2-10 4.2S20 28.6 20 26z" fill="#f5a642" fill-opacity="0.75"/>
+          <path d="M44 27h4a5.5 5.5 0 0 1 0 11h-4" stroke="#ffdd00" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M14 50h34" stroke="rgba(255,221,0,0.45)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="coffee-copy">
+        <span class="coffee-badge">100% Freeware &bull; Zero Subscriptions</span>
+        <h3>Enjoying fresher eyes? Fuel the next build.</h3>
+        <p>Iris is handcrafted natively in Swift with zero telemetry, ads, or paywalls. If 20-20-20 rests keep your focus sharp, buying a coffee helps cover Apple Developer tooling, multi-Mac testing, and late-night updates.</p>
+        <div class="coffee-actions">
+          <a href="https://buymeacoffee.com/harshwardhangalande" target="_blank" rel="noopener noreferrer" class="btn-coffee-hero">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" fill="currentColor" fill-opacity="0.18"/>
+              <line x1="6" y1="2" x2="6" y2="4"/>
+              <line x1="10" y1="2" x2="10" y2="4"/>
+              <line x1="14" y1="2" x2="14" y2="4"/>
+            </svg>
+            Buy me a coffee
+          </a>
+          <span class="coffee-note">Direct creator support on Buy Me a Coffee</span>
+        </div>
+      </div>
+    </section>
+
     <footer class="reveal-blur">
       <p>&copy; 2026 Harshwardhan Galande. Freeware for personal use.</p>
-      <p><a href="https://github.com/harshwardhangalande/Iris">GitHub Repository</a> • <a href="https://github.com/harshwardhangalande/Iris/releases">Releases</a> • <a href="https://github.com/harshwardhangalande/Iris/issues">Bug Reports</a></p>
+      <p><a href="https://buymeacoffee.com/harshwardhangalande" target="_blank" rel="noopener noreferrer" style="color:#ffdd00;font-weight:600;">Buy Me a Coffee</a> &bull; <a href="https://github.com/harshwardhangalande/Iris">GitHub Repository</a> &bull; <a href="https://github.com/harshwardhangalande/Iris/releases">Releases</a> &bull; <a href="https://github.com/harshwardhangalande/Iris/issues">Bug Reports</a></p>
     </footer>
   </div>
 
@@ -1202,9 +1449,9 @@
       // 2. Package Manager tab switching
       var commands = {
         brew: "brew install --cask harshwardhangalande/iris/iris",
-        dmg: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg",
-        zip: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.zip",
-        curl: "TMPDIR_IRIS=$(mktemp -d) && MNT_IRIS=$(mktemp -d) && curl -fsSL https://github.com/harshwardhangalande/Iris/releases/download/v3.1.0/Iris-v3.1.0.dmg -o \"$TMPDIR_IRIS/Iris.dmg\" && hdiutil attach \"$TMPDIR_IRIS/Iris.dmg\" -nobrowse -mountpoint \"$MNT_IRIS\" && cp -R \"$MNT_IRIS/Iris.app\" /Applications/ && hdiutil detach \"$MNT_IRIS\" && rm -rf \"$TMPDIR_IRIS\" \"$MNT_IRIS\""
+        dmg: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg",
+        zip: "curl -LO https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.zip",
+        curl: "TMPDIR_IRIS=$(mktemp -d) && MNT_IRIS=$(mktemp -d) && curl -fsSL https://github.com/harshwardhangalande/Iris/releases/download/v3.1.1/Iris-v3.1.1.dmg -o \"$TMPDIR_IRIS/Iris.dmg\" && hdiutil attach \"$TMPDIR_IRIS/Iris.dmg\" -nobrowse -mountpoint \"$MNT_IRIS\" && cp -R \"$MNT_IRIS/Iris.app\" /Applications/ && hdiutil detach \"$MNT_IRIS\" && rm -rf \"$TMPDIR_IRIS\" \"$MNT_IRIS\""
       };
 
       document.querySelectorAll(".tab-btn").forEach(function(btn) {
@@ -1410,7 +1657,7 @@
           rootMargin: "0px 0px -40px 0px"
         });
 
-        document.querySelectorAll("[data-blur-text]:not(.hero-title):not(.hero-subtitle), [data-stagger-group], footer.reveal-blur").forEach(function(el) {
+        document.querySelectorAll("[data-blur-text]:not(.hero-title):not(.hero-subtitle), [data-stagger-group], .coffee-spotlight.reveal-blur, footer.reveal-blur").forEach(function(el) {
           scrollObserver.observe(el);
         });
       } else {
